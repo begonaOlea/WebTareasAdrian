@@ -6,7 +6,9 @@
 package com.tarea.servicios;
 
 import com.tarea.dominio.*;
+import com.tarea.excepcion.DBException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 public class DB {
     private static ArrayList<Usuario> listaUsuario;
     private static int ultimoIdTarea=0;
+    private static int ultimoIdUsuario=0;
 
     public static int getUltimoIdTarea() {
         return ultimoIdTarea;
@@ -23,6 +26,19 @@ public class DB {
     public static void setUltimoIdTarea(int ultimoIdTarea) {
         DB.ultimoIdTarea = ultimoIdTarea;
     }
+
+    public static ArrayList<Usuario> getListaUsuario() {
+        return listaUsuario;
+    }
+
+    public static int getUltimoIdUsuario() {
+        return ultimoIdUsuario;
+    }
+
+    public static void setUltimoIdUsuario(int ultimoIdusuario) {
+        DB.ultimoIdUsuario = ultimoIdusuario;
+    }
+    
     
     //*********************************************************
     
@@ -30,22 +46,34 @@ public class DB {
     
     public static synchronized Usuario getUser(int id){
         Usuario user=null;
-        for (int i = 0; i < 10; i++) {
-            
+        for (Usuario u:listaUsuario) {
+            if (u.getId()==id) {
+                user=u;
+            }
         }
         return user;
     }
-    
-    
-    
-    
     //Get all Tareas un usuario
+    public  static synchronized Collection<Tarea> getListaTareaUser(int id){
+        Collection<Tarea> listaTareas=null;
+        for (Usuario u:listaUsuario) {
+            if (u.getId()==id) {
+                listaTareas=u.getListaTareas();
+            }
+        }
+        
+        return listaTareas;
+    }
+    //Añadir Usuario
+    public static void addUsuario (Usuario u) throws DBException{
+        listaUsuario.add(u);
+    }
     
     static{
         listaUsuario=new ArrayList<Usuario>();
-        listaUsuario.add(new Usuario(1,"a@ruiz.es","1","adrian","ruiz"));
-        listaUsuario.add(new Usuario(2,"ton@ton.es","1","ser","top"));
-        listaUsuario.add(new Usuario(3,"ser@serz.es","1","ru","ghuo"));
+        listaUsuario.add(new Usuario(++ultimoIdUsuario,"a@ruiz.es","1","adrian","ruiz"));
+        listaUsuario.add(new Usuario(++ultimoIdUsuario,"ton@ton.es","1","ser","top"));
+        listaUsuario.add(new Usuario(++ultimoIdUsuario,"ser@serz.es","1","ru","ghuo"));
         
         //Añado a cada usuario dos tareas
         listaUsuario.get(0).addTarea(new Tarea(++ultimoIdTarea, "Application JAVA", Estado.TODO, listaUsuario.get(0).getId()));

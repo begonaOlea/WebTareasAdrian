@@ -19,6 +19,9 @@
             <a class="nav-link" href="lista-tareas.jsp">Listado de tareas</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="lista-users.jsp">Listado Usuarios**Solo ADMIN</a>
+        </li>
+        <li class="nav-item">
             <c:choose>
                 <c:when test="${not empty sessionScope.usuario}">
                     <p class="nav-link">Usuario--> ${sessionScope.usuario.email}</p>
