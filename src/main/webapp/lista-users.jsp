@@ -48,6 +48,7 @@
                         <td> 
                             <ul>
                             <% for(Tarea t:l.getListaTareas()) {%>
+                                <li> <%= t.getIdTarea() %></li>
                                 <li> <%= t.getDescripcion()+" ---> "+t.getEstado()%></li>
                             <% } %>
                             </ul>

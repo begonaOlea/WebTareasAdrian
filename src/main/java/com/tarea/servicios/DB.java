@@ -65,7 +65,7 @@ public class DB {
         return listaTareas;
     }
     //Añadir Usuario
-    public static void addUsuario (Usuario u) throws DBException{
+    public static synchronized void addUsuario (Usuario u) throws DBException{
         listaUsuario.add(u);
     }
     

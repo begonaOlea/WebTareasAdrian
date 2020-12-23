@@ -5,6 +5,8 @@
  */
 package com.tarea.servlets;
 
+import com.tarea.dominio.Estado;
+import com.tarea.dominio.Tarea;
 import com.tarea.dominio.Usuario;
 import com.tarea.excepcion.DBException;
 import com.tarea.servicios.DB;
@@ -53,27 +55,28 @@ public class CreateUserServlet extends HttpServlet {
             valido = false;
         }
 
-        // 2.2. VALIDAR NOMBRE
-        if (paramNombre == null || paramNombre.trim().length() == 0) {
-            msgErrorNombre = "Debe indicar nombre ";
-            valido = false;
-        }
-         // 2.3. VALIDAR APELLIDOS
-        if (paramApell == null || paramApell.trim().length() == 0) {
-            msgErrorApellidos = "Debe indicar los apellidos ";
-            valido = false;
-        }
+//        // 2.2. VALIDAR NOMBRE
+//        if (paramNombre == null || paramNombre.trim().length() == 0) {
+//            msgErrorNombre = "Debe indicar nombre ";
+//            valido = false;
+//        }
+//         // 2.3. VALIDAR APELLIDOS
+//        if (paramApell == null || paramApell.trim().length() == 0) {
+//            msgErrorApellidos = "Debe indicar los apellidos ";
+//            valido = false;
+//        }
 
-        //3.  SI NO HAY ALGUN ERROR intentar grabar
+        //3.  SI NO HAY ALGUN ERROR intentar grabar un usuario y su primera tarea
         if (valido) {
             int id= DB.getUltimoIdUsuario()+1;
+            int idTarea=DB.getUltimoIdTarea()+1;
             Usuario usuario = new Usuario(id ,paramEmail, paramPwd, paramNombre, paramApell);
+            Tarea t=new Tarea(idTarea, "Hola, soy tu primera Tarea", Estado.TODO, usuario.getId());
+            usuario.addTarea(t);
             DB.setUltimoIdUsuario(id);
+            DB.setUltimoIdTarea(idTarea);
             try {
                 DB.addUsuario(usuario);
-                // add usuario ATRIBUTO DE SESION
-                //El usuario no manda jSessionId , crea una nueva sesion
-                //sino devuelve la sesión existente para es id
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
             } catch (DBException e) {
