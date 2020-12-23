@@ -15,14 +15,14 @@
         <li class="nav-item">
             <a class="nav-link" href="index.jsp">Portada</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="lista-tareas.jsp">Listado de tareas</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="lista-users.jsp">Listado Usuarios**Solo ADMIN</a>
-        </li>
         <c:choose>
             <c:when test="${not empty sessionScope.usuario}">
+                <li class="nav-item">
+                    <a class="nav-link" href="lista-tareas.jsp">Mis Tareas tareas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="lista-users.jsp">**ADMIN**</a>
+                </li>
                 <li class="nav-item">
                     <p class="nav-link">Usuario--> ${sessionScope.usuario.email}</p>
                 </li>

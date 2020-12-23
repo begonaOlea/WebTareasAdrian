@@ -24,6 +24,14 @@ public class Tarea {
         this.idUsuario=this.idUsuario;
     }
 
+    public Tarea(int idTarea, String Descripcion, int idUsuario) {
+        this.idTarea = idTarea;
+        this.Descripcion = Descripcion;
+        this.estado=estado.TODO;
+        this.idUsuario = idUsuario;
+    }
+    
+
     public Tarea() {
     }
     

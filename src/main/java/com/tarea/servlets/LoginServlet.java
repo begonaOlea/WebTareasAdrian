@@ -61,10 +61,10 @@ public class LoginServlet extends HttpServlet {
         }
         
         //si error ir a  login.jsp y mostrar mensajes de error        
-        //si ok  index.jsp
+        //si ok  a tareas
      String jspAMostrar = "";
         if (valido) {
-            jspAMostrar = "index.jsp";
+            jspAMostrar = "lista-tareas.jsp";
         } else {
             jspAMostrar = "login.jsp";
             req.setAttribute("msgErrorEmail", msgErrorEmail);

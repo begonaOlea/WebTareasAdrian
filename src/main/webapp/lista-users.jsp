@@ -21,7 +21,7 @@
         <div class="container-fluid " style="margin-top: 50px">
             <div class="row justify-content-center">
                 <div class="col-4">
-                    <h1> Listado de libros disponibles</h1>
+                    <h1> Panel Admin</h1>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -48,8 +48,7 @@
                         <td> 
                             <ul>
                             <% for(Tarea t:l.getListaTareas()) {%>
-                                <li> <%= t.getIdTarea() %></li>
-                                <li> <%= t.getDescripcion()+" ---> "+t.getEstado()%></li>
+                                <li> <%= t.getIdTarea()+":  " +t.getDescripcion()+" ---> "+t.getEstado()%></li>
                             <% } %>
                             </ul>
                         </td>

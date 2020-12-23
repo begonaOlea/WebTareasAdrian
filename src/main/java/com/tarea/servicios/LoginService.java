@@ -32,8 +32,10 @@ public class LoginService {
         }else{
             //ver si clave ok
             if(usrEncontrado.getPassword().equals(clave)){
-                //añadir a sesion
+                Collection<Tarea> listadoTareas=DB.getListaTareaUser(usrEncontrado.getId());
+                //añadir a sesion el user y la lista de tareas
                 sesion.setAttribute("usuario", usrEncontrado);
+                sesion.setAttribute("listadoTareas", listadoTareas);
             }else{
                 throw new LoginException("Clave no válida");
             }

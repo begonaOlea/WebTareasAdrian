@@ -10,8 +10,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <%@include file="/WEB-INF/bootStrap.html" %>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="/WEB-INF/navbar.jspf" %>
+        <div class="container">
+            <h1> Nueva Tarea</h1>
+            <form action="alta-tarea" method="post">
+                <div class="mb-3">
+                    <label for="inputDescripcion" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="inputDescripcion" name="inputDescripcion" >
+                </div>
+                <div class="mb-3">
+                    <input type="hidden" class="form-control" id="inputIdUser" name="inputIdUser" value=" ${sessionScope.usuario.id} ">
+                </div>
+                <button type="submit" class="btn btn-primary">Crear</button>
+            </form>
     </body>
 </html>

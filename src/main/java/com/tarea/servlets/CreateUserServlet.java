@@ -12,6 +12,7 @@ import com.tarea.excepcion.DBException;
 import com.tarea.servicios.DB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -55,18 +56,7 @@ public class CreateUserServlet extends HttpServlet {
             valido = false;
         }
 
-//        // 2.2. VALIDAR NOMBRE
-//        if (paramNombre == null || paramNombre.trim().length() == 0) {
-//            msgErrorNombre = "Debe indicar nombre ";
-//            valido = false;
-//        }
-//         // 2.3. VALIDAR APELLIDOS
-//        if (paramApell == null || paramApell.trim().length() == 0) {
-//            msgErrorApellidos = "Debe indicar los apellidos ";
-//            valido = false;
-//        }
-
-        //3.  SI NO HAY ALGUN ERROR intentar grabar un usuario y su primera tarea
+        //grabar un usuario y su primera tarea
         if (valido) {
             int id= DB.getUltimoIdUsuario()+1;
             int idTarea=DB.getUltimoIdTarea()+1;
@@ -75,10 +65,12 @@ public class CreateUserServlet extends HttpServlet {
             usuario.addTarea(t);
             DB.setUltimoIdUsuario(id);
             DB.setUltimoIdTarea(idTarea);
+            Collection<Tarea> listadoTareas=DB.getListaTareaUser(id);
             try {
                 DB.addUsuario(usuario);
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
+                session.setAttribute("listadoTareas", listadoTareas);
             } catch (DBException e) {
                 msgErrorAlta = e.getMessage();
                 valido = false;               

@@ -12,6 +12,10 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.tarea.servlets.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateTarea</servlet-name>
+        <servlet-class>com.tarea.servlets.CreateTarea</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CreateUserServlet</servlet-name>
         <url-pattern>/alta-user</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateTarea</servlet-name>
+        <url-pattern>/alta-tarea</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
