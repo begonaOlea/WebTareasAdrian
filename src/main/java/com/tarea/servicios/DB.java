@@ -68,6 +68,16 @@ public class DB {
     public static synchronized void addUsuario (Usuario u) throws DBException{
         listaUsuario.add(u);
     }
+    //Modificar tarea
+    public static synchronized void setEstadoTarea(int idUsuario,int idTarea, Estado est){
+        Collection<Tarea> listaTareas= DB.getListaTareaUser(idUsuario);
+        for (Tarea t:listaTareas) {
+            if (t.getIdTarea()==idTarea) {
+                t.setEstado(est);
+            }
+        }
+        
+    }
     
     static{
         listaUsuario=new ArrayList<Usuario>();

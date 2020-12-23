@@ -16,6 +16,10 @@
         <servlet-name>CreateTarea</servlet-name>
         <servlet-class>com.tarea.servlets.CreateTarea</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CambiarTarea</servlet-name>
+        <servlet-class>com.tarea.servlets.CambiarTarea</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CreateUserServlet</servlet-name>
         <url-pattern>/alta-user</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>CreateTarea</servlet-name>
         <url-pattern>/alta-tarea</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CambiarTarea</servlet-name>
+        <url-pattern>/cambiar-tarea</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

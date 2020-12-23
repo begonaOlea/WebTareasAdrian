@@ -37,7 +37,7 @@
                     </a>
                 </div>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-around">
                 <%
                     Collection<Tarea> listaTareas= DB.getListaTareaUser(user.getId());
                 %>
@@ -55,7 +55,7 @@
                                <% if(t.getEstado()==Estado.TODO){ %>
                                     <td> <%= t.getDescripcion() %></td>
                                     <td> 
-                                        <a href="cambiar-tarea"> 
+                                        <a href="cambiar-tarea?id=<%= t.getIdTarea()%>&nuevoestado=<%= Estado.INPROGRESS %>" > 
                                              <img src="https://www.flaticon.es/svg/static/icons/svg/702/702132.svg" class="rounded" style="width: 25px; height: 25px" alt="Fallo">
                                          </a>
                                     </td>
@@ -79,13 +79,13 @@
                            <tr>
                                <% if(t.getEstado()==Estado.INPROGRESS){ %>
                                     <td>
-                                        <a href="cambiar-tarea"> 
+                                        <a href="cambiar-tarea?id=<%= t.getIdTarea()%>&nuevoestado=<%= Estado.TODO %>"> 
                                              <img src="https://www.flaticon.es/svg/static/icons/svg/592/592275.svg" class="rounded" style="width: 25px; height: 25px" alt="Fallo">
                                          </a>
                                     </td>
                                     <td> <%= t.getDescripcion() %></td>
                                     <td> 
-                                        <a href="cambiar-tarea"> 
+                                        <a href="cambiar-tarea?id=<%= t.getIdTarea()%>&nuevoestado=<%= Estado.DONE %>"> 
                                              <img src="https://www.flaticon.es/svg/static/icons/svg/702/702132.svg" class="rounded" style="width: 25px; height: 25px" alt="Fallo">
                                          </a>
                                     </td>
@@ -108,8 +108,8 @@
                            <tr>
                                <% if(t.getEstado()==Estado.DONE){ %>
                                     <td> 
-                                        <a href="cambiar-tarea"> 
-                                             <img src="https://www.flaticon.es/svg/static/icons/svg/702/702132.svg" class="rounded" style="width: 25px; height: 25px" alt="Fallo">
+                                        <a href="cambiar-tarea?id=<%= t.getIdTarea()%>&nuevoestado=<%= Estado.INPROGRESS %>"> 
+                                             <img src="https://www.flaticon.es/svg/static/icons/svg/592/592275.svg" class="rounded" style="width: 25px; height: 25px" alt="Fallo">
                                          </a>
                                     </td>
                                     <td> <%= t.getDescripcion() %></td>
