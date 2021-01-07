@@ -18,7 +18,7 @@
             <h1> Nueva Tarea</h1>
             <form action="alta-tarea" method="post">
                 <div class="mb-3">
-                    <label for="inputDescripcion" class="form-label">Email</label>
+                    <label for="inputDescripcion" class="form-label">Tarea</label>
                     <input type="text" class="form-control" id="inputDescripcion" name="inputDescripcion" >
                 </div>
                 <div class="mb-3">
