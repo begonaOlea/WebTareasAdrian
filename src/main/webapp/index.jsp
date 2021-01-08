@@ -15,7 +15,10 @@
     <body>
         <%@include file="WEB-INF/navbar.jspf" %>
         <div class="container-fluid" style="margin-top: 30 px">
-            <div class="row justify-content-center" style="margin-top: 30 px">
+            <div class="row justify-content-center" style="margin-top: 30px">
+                <h1> Gestiona tu PYME comodamente</h1>
+            </div>
+            <div class="row justify-content-center" style="margin-top: 20px">
                 <div class="col">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
